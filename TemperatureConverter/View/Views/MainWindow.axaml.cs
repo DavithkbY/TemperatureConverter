@@ -31,5 +31,17 @@ namespace View.Views
 
             textBox.Text = celsiusString;
         }
+
+        private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
+        {
+            var textBox = this.FindControl<TextBox>("textBox");
+
+            var celsiusString = textBox.Text;
+            var celsius = double.Parse(celsiusString);
+            var fahrenheit = celsius * 1.8 + 32;
+            var fahrenheitString = fahrenheit.ToString();
+
+            textBox.Text = fahrenheitString;
+        }
     }
 }
