@@ -4,10 +4,11 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Data.Converters;
 using System;
 using System.Globalization;
+using System.ComponentModel;
 
 namespace View.Views
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public MainWindow()
         {
@@ -20,6 +21,24 @@ namespace View.Views
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+        }
+
+        private double temperatureInKelvin;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public double TemperatureInKelvin
+        {
+            get
+            {
+                return temperatureInKelvin;
+            }
+            set
+            {
+                temperatureInKelvin = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TemperatureInKelvin)));
+            }
         }
     }
 

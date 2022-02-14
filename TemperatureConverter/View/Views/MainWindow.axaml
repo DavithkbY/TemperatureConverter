@@ -7,6 +7,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="View.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
+		Name="mainWindow"
         Title="View">
 	<Window.Resources>
 		<local:TemperatureConverter x:Key="celsiusConverter">
@@ -52,7 +53,7 @@
 				<RowDefinition />
 			</Grid.RowDefinitions>
 			<TextBlock Grid.Row="0" Text="Celsius" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding ElementName=slider, Path=Value, Converter={StaticResource celsiusConverter}}" Classes="textBox" />
+			<TextBox Grid.Row="1" Text="{Binding ElementName=mainWindow, Path=TemperatureInKelvin, Converter={StaticResource celsiusConverter}}" Classes="textBox" />
 		</Grid>
 		<Grid>
 			<Grid.ColumnDefinitions>
@@ -63,7 +64,7 @@
 				<RowDefinition />
 			</Grid.RowDefinitions>
 			<TextBlock Grid.Row="0" Text="Fahrenheit" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding ElementName=slider, Path=Value, Converter={StaticResource fahrenheitConverter}}" Classes="textBox" />
+			<TextBox Grid.Row="1" Text="{Binding ElementName=mainWindow, Path=TemperatureInKelvin, Converter={StaticResource fahrenheitConverter}}" Classes="textBox" />
 		</Grid>
 		<Grid>
 			<Grid.ColumnDefinitions>
@@ -74,8 +75,8 @@
 				<RowDefinition />
 			</Grid.RowDefinitions>
 			<TextBlock Grid.Row="0" Text="Kelvin" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding ElementName=slider, Path=Value}" Classes="textBox" />
+			<TextBox Grid.Row="1" Text="{Binding ElementName=mainWindow, Path=TemperatureInKelvin}" Classes="textBox" />
 		</Grid>
-		<Slider Name="slider" Minimum="0" Maximum="1000" />
+		<Slider Name="slider" Minimum="0" Maximum="1000" Value="{Binding ElementName=mainWindow, Path=TemperatureInKelvin}" />
 	</StackPanel>
 </Window>
