@@ -1,6 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Data.Converters;
+using System;
+using System.Globalization;
 
 namespace View.Views
 {
@@ -41,6 +44,25 @@ namespace View.Views
                 fahrenheitTextBox.Text = fahrenheitString;
                 celsiusTextBox.Text = celsiusString;
             }
+        }
+    }
+
+    public class CelsiusConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var kelvin = (double)value;
+            var celsius = kelvin - 273.15;
+
+            return celsius;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var celsius = double.Parse((string)value);
+            var kelvin = celsius + 273.15;
+
+            return kelvin;
         }
     }
 }
