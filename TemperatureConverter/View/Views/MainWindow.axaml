@@ -2,10 +2,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="View.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="View">
+	<Window.Resources>
+		<local:CelsiusConverter x:Key="celsiusConverter" />
+	</Window.Resources>
 	<Window.Styles>
 		<Style Selector="TextBlock.label">
 			<Setter Property="Background">
@@ -38,7 +42,7 @@
 				<RowDefinition />
 			</Grid.RowDefinitions>
 			<TextBlock Grid.Row="0" Text="Celsius" Classes="label" />
-			<TextBox Grid.Row="1" Name="celsiusTextBox" Classes="textBox" />
+			<TextBox Grid.Row="1" Name="celsiusTextBox" Text="{Binding ElementName=slider, Path=Value, Converter={StaticResource celsiusConverter}}" Classes="textBox" />
 		</Grid>
 		<Grid>
 			<Grid.ColumnDefinitions>

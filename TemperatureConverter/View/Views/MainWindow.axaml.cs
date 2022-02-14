@@ -17,7 +17,6 @@ namespace View.Views
 #endif
 
             slider = this.FindControl<Slider>("slider");
-            celsiusTextBox = this.FindControl<TextBox>("celsiusTextBox");
             fahrenheitTextBox = this.FindControl<TextBox>("fahrenheitTextBox");
         }
 
@@ -27,7 +26,6 @@ namespace View.Views
         }
 
         private Slider slider;
-        private TextBox celsiusTextBox;
         private TextBox fahrenheitTextBox;
 
         private void SliderChanged(object sender, AvaloniaPropertyChangedEventArgs e)
@@ -39,10 +37,8 @@ namespace View.Views
                 var fahrenheit = celsius * 1.8 + 32;
 
                 var fahrenheitString = fahrenheit.ToString();
-                var celsiusString = celsius.ToString();
 
                 fahrenheitTextBox.Text = fahrenheitString;
-                celsiusTextBox.Text = celsiusString;
             }
         }
     }
@@ -54,7 +50,7 @@ namespace View.Views
             var kelvin = (double)value;
             var celsius = kelvin - 273.15;
 
-            return celsius;
+            return celsius.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
