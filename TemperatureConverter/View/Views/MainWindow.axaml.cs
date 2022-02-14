@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
 namespace View.Views
@@ -14,6 +13,7 @@ namespace View.Views
             this.AttachDevTools();
 #endif
 
+            slider = this.FindControl<Slider>("slider");
             celsiusTextBox = this.FindControl<TextBox>("celsiusTextBox");
             fahrenheitTextBox = this.FindControl<TextBox>("fahrenheitTextBox");
             kelvinTextBox = this.FindControl<TextBox>("kelvinTextBox");
@@ -24,47 +24,27 @@ namespace View.Views
             AvaloniaXamlLoader.Load(this);
         }
 
+        private Slider slider;
         private TextBox celsiusTextBox;
         private TextBox fahrenheitTextBox;
         private TextBox kelvinTextBox;
 
-        private void ConvertFahrenheit(object sender, RoutedEventArgs e)
+        private void SliderChanged(object sender, AvaloniaPropertyChangedEventArgs e)
         {
-            var fahrenheitString = fahrenheitTextBox.Text;
-            var fahrenheit = double.Parse(fahrenheitString);
-            var celsius = (fahrenheit - 32) / 1.8;
-            var kelvin = celsius + 273.15;
-            var celsiusString = celsius.ToString();
-            var kelvinString = kelvin.ToString();
+            if (slider != null)
+            {
+                var kelvin = slider.Value;
+                var celsius = kelvin - 273.15;
+                var fahrenheit = celsius * 1.8 + 32;
 
-            celsiusTextBox.Text = celsiusString;
-            kelvinTextBox.Text = kelvinString;
-        }
+                var kelvinString = kelvin.ToString();
+                var fahrenheitString = fahrenheit.ToString();
+                var celsiusString = celsius.ToString();
 
-        private void ConvertCelsius(object sender, RoutedEventArgs e)
-        {
-            var celsiusString = celsiusTextBox.Text;
-            var celsius = double.Parse(celsiusString);
-            var fahrenheit = celsius * 1.8 + 32;
-            var kelvin = celsius + 273.15;
-            var fahrenheitString = fahrenheit.ToString();
-            var kelvinString = kelvin.ToString();
-
-            fahrenheitTextBox.Text = fahrenheitString;
-            kelvinTextBox.Text = kelvinString;
-        }
-
-        private void ConvertKelvin(object sender, RoutedEventArgs e)
-        {
-            var kelvinString = kelvinTextBox.Text;
-            var kelvin = double.Parse(kelvinString);
-            var celsius = kelvin - 273.15;
-            var fahrenheit = celsius * 1.8 + 32;
-            var fahrenheitString = fahrenheit.ToString();
-            var celsiusString = celsius.ToString();
-
-            fahrenheitTextBox.Text = fahrenheitString;
-            celsiusTextBox.Text = celsiusString;
+                kelvinTextBox.Text = kelvinString;
+                fahrenheitTextBox.Text = fahrenheitString;
+                celsiusTextBox.Text = celsiusString;
+            }
         }
     }
 }

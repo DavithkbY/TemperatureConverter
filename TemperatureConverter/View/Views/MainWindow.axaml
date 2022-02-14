@@ -62,5 +62,6 @@
 			<TextBlock Grid.Row="0" Text="Kelvin" Classes="label" />
 			<TextBox Grid.Row="1" Name="kelvinTextBox" Classes="textBox" />
 		</Grid>
+		<Slider Name="slider" Minimum="0" Maximum="1000" PropertyChanged="SliderChanged" />
 	</StackPanel>
 </Window>
