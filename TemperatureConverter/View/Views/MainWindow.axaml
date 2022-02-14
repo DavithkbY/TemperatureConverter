@@ -20,13 +20,20 @@
 			<Setter Property="FontSize" Value="16" />
 			<Setter Property="Padding" Value="2" />
 		</Style>
+		<Style Selector="TextBox.textBox">
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="FontSize" Value="16" />
+		</Style>
+		<Style Selector="Button.button">
+			<Setter Property="FontSize" Value="16" />
+		</Style>
 	</Window.Styles>
 	<StackPanel>
 		<TextBlock Text="Celsius" Classes="label" />
-		<TextBox Name="celsiusTextBox" HorizontalContentAlignment="Center" FontSize="16" />
+		<TextBox Name="celsiusTextBox" Classes="textBox" />
 		<TextBlock Text="Fahrenheit" Classes="label" />
-		<TextBox Name="fahrenheitTextBox" HorizontalContentAlignment="Center" FontSize="16" />
-		<Button Content="Convert to Celsius" Click="ConvertToCelsius" FontSize="16" />
-		<Button Content="Convert to Fahrenheit" Click="ConvertToFahrenheit" FontSize="16" />
+		<TextBox Name="fahrenheitTextBox" Classes="textBox" />
+		<Button Content="Convert to Celsius" Click="ConvertToCelsius" Classes="button" />
+		<Button Content="Convert to Fahrenheit" Click="ConvertToFahrenheit" Classes="button" />
 	</StackPanel>
 </Window>
