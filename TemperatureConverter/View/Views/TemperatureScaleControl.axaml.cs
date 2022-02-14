@@ -22,6 +22,14 @@ namespace View.Views
             set { SetValue(HeaderProperty, value); }
         }
 
-        public static readonly StyledProperty<string> HeaderProperty = AvaloniaProperty.Register<TemperatureScaleControl, string>("Header");
+        public double Value
+        {
+            get { return GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
+        }
+
+        public static readonly StyledProperty<string> HeaderProperty = AvaloniaProperty.Register<TemperatureScaleControl, string>("Header", "");
+
+        public static readonly StyledProperty<double> ValueProperty = AvaloniaProperty.Register<TemperatureScaleControl, double>("Value", 0.0);
     }
 }

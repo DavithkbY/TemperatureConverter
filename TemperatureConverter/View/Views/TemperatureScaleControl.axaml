@@ -44,7 +44,7 @@
 				<ColumnDefinition Width="auto" />
 			</Grid.ColumnDefinitions>
 			<Button Grid.Column="0" Content="-" Classes="button" Command="{Binding Decrement}" />
-			<TextBox Grid.Column="1" Classes="textBox" Text="{Binding Path=Temperature.Value}" />
+			<TextBox Grid.Column="1" Classes="textBox" Text="{Binding Path=Value, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Mode=TwoWay}" />
 			<Button Grid.Column="2" Content="+" Classes="button" Command="{Binding Increment}" />
 		</Grid>
 	</Grid>
