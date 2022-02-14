@@ -16,6 +16,7 @@ namespace View.Views
 #if DEBUG
             this.AttachDevTools();
 #endif
+            this.DataContext = this;
         }
 
         private void InitializeComponent()
