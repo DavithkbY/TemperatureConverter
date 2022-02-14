@@ -15,31 +15,11 @@ namespace View.Views
 #if DEBUG
             this.AttachDevTools();
 #endif
-
-            slider = this.FindControl<Slider>("slider");
-            fahrenheitTextBox = this.FindControl<TextBox>("fahrenheitTextBox");
         }
 
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
-        }
-
-        private Slider slider;
-        private TextBox fahrenheitTextBox;
-
-        private void SliderChanged(object sender, AvaloniaPropertyChangedEventArgs e)
-        {
-            if (slider != null)
-            {
-                var kelvin = slider.Value;
-                var celsius = kelvin - 273.15;
-                var fahrenheit = celsius * 1.8 + 32;
-
-                var fahrenheitString = fahrenheit.ToString();
-
-                fahrenheitTextBox.Text = fahrenheitString;
-            }
         }
     }
 
@@ -57,6 +37,25 @@ namespace View.Views
         {
             var celsius = double.Parse((string)value);
             var kelvin = celsius + 273.15;
+
+            return kelvin;
+        }
+    }
+
+    public class FahrenheitConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var kelvin = (double)value;
+            var fahrenheit = kelvin * 1.8 - 459.67;
+
+            return fahrenheit.ToString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var fahrenheit = double.Parse((string)value);
+            var kelvin = (fahrenheit + 459.67) / 1.8;
 
             return kelvin;
         }
