@@ -36,7 +36,7 @@
 			<RowDefinition />
 			<RowDefinition />
 		</Grid.RowDefinitions>
-		<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
+		<TextBlock Grid.Row="0" Text="{Binding Path=Header, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" Classes="label" />
 		<Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
