@@ -6,7 +6,8 @@
         x:Class="View.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="View">
-	<Grid>
-		
-	</Grid>
+	<StackPanel>
+		<TextBox Name="textBox" />
+		<Button Content="Convert to Celsius" Click="ConvertToCelsius" />
+	</StackPanel>
 </Window>
