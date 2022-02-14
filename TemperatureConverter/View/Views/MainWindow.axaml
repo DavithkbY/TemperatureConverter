@@ -30,39 +30,25 @@
 		</Style>
 	</Window.Styles>
 	<StackPanel>
-		<Grid DataContext="{Binding Celsius}">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition />
-				<RowDefinition />
-			</Grid.RowDefinitions>
-			<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding Path=Temperature}" Classes="textBox" />
-		</Grid>
-		<Grid DataContext="{Binding Fahrenheit}">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition />
-				<RowDefinition />
-			</Grid.RowDefinitions>
-			<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding Path=Temperature}" Classes="textBox" />
-		</Grid>
-		<Grid DataContext="{Binding Kelvin}">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition />
-				<RowDefinition />
-			</Grid.RowDefinitions>
-			<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding Path=Temperature}" Classes="textBox" />
-		</Grid>
+		<ItemsControl Items="{Binding Scales}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
+						<TextBox Grid.Row="1"
+                     Classes="textBox"
+                     Text="{Binding Path=Temperature}" />
+					</Grid>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
 		<Slider Name="slider" Minimum="0" Maximum="1000" Value="{Binding Path=TemperatureInKelvin}" />
 	</StackPanel>
 </Window>

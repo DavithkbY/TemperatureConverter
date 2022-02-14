@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using Model;
+using System.Collections.Generic;
+using System.ComponentModel;
 
-namespace View
+namespace ViewModel
 {
     public class ConverterViewModel : INotifyPropertyChanged
     {
@@ -32,6 +34,16 @@ namespace View
                 temperatureInKelvin = value;
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TemperatureInKelvin)));
+            }
+        }
+
+        public IEnumerable<TemperatureScaleViewModel> Scales
+        {
+            get
+            {
+                yield return Celsius;
+                yield return Fahrenheit;
+                yield return Kelvin;
             }
         }
     }
