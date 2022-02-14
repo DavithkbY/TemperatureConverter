@@ -7,11 +7,11 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="View">
 	<StackPanel>
-		<TextBlock Text="Celsius" Background="#AAA" />
-		<TextBox Name="celsiusTextBox" />
-		<TextBlock Text="Fahrenheit" Background="#AAA" />
-		<TextBox Name="fahrenheitTextBox" />
-		<Button Content="Convert to Celsius" Click="ConvertToCelsius" />
-		<Button Content="Convert to Fahrenheit" Click="ConvertToFahrenheit" />
+		<TextBlock Text="Celsius" Background="#AAA" FontWeight="Bold" FontSize="16" Padding="2" />
+		<TextBox Name="celsiusTextBox" HorizontalContentAlignment="Center" FontSize="16" />
+		<TextBlock Text="Fahrenheit" Background="#AAA" FontWeight="Bold" FontSize="16" Padding="2" />
+		<TextBox Name="fahrenheitTextBox" HorizontalContentAlignment="Center" FontSize="16" />
+		<Button Content="Convert to Celsius" Click="ConvertToCelsius" FontSize="16" />
+		<Button Content="Convert to Fahrenheit" Click="ConvertToFahrenheit" FontSize="16" />
 	</StackPanel>
 </Window>
