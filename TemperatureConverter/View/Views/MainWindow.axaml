@@ -40,7 +40,7 @@
 			</Grid.RowDefinitions>
 			<TextBlock Grid.Row="0" Text="Celsius" Classes="label" />
 			<TextBox Grid.Row="1" Name="celsiusTextBox" Classes="textBox" />
-			<Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Content="Convert" Click="ConvertToFahrenheit" Classes="button" />
+			<Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Content="Convert" Click="ConvertCelsius" Classes="button" />
 		</Grid>
 		<Grid>
 			<Grid.ColumnDefinitions>
@@ -53,7 +53,20 @@
 			</Grid.RowDefinitions>
 			<TextBlock Grid.Row="0" Text="Fahrenheit" Classes="label" />
 			<TextBox Grid.Row="1" Name="fahrenheitTextBox" Classes="textBox" />
-			<Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Content="Convert" Click="ConvertToCelsius" Classes="button" />
+			<Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Content="Convert" Click="ConvertFahrenheit" Classes="button" />
+		</Grid>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="3*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<TextBlock Grid.Row="0" Text="Kelvin" Classes="label" />
+			<TextBox Grid.Row="1" Name="kelvinTextBox" Classes="textBox" />
+			<Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Content="Convert" Click="ConvertKelvin" Classes="button" />
 		</Grid>
 	</StackPanel>
 </Window>
