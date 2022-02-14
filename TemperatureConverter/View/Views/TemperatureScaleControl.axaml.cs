@@ -1,4 +1,5 @@
 using Avalonia;
+using Avalonia.Data;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
@@ -30,6 +31,6 @@ namespace View.Views
 
         public static readonly StyledProperty<string> HeaderProperty = AvaloniaProperty.Register<TemperatureScaleControl, string>("Header", "");
 
-        public static readonly StyledProperty<double> ValueProperty = AvaloniaProperty.Register<TemperatureScaleControl, double>("Value", 0.0);
+        public static readonly StyledProperty<double> ValueProperty = AvaloniaProperty.Register<TemperatureScaleControl, double>("Value", 0.0, defaultBindingMode: BindingMode.TwoWay);
     }
 }
