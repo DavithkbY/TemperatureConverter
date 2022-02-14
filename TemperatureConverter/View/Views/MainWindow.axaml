@@ -44,7 +44,7 @@
 						<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
 						<TextBox Grid.Row="1"
                      Classes="textBox"
-                     Text="{Binding Path=Temperature}" />
+                     Text="{Binding Path=Temperature.Value}" />
 					</Grid>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
