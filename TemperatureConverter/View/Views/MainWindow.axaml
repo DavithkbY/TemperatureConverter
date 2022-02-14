@@ -43,7 +43,7 @@
 		</Style>
 	</Window.Styles>
 	<StackPanel>
-		<Grid>
+		<Grid DataContext="{Binding Celsius}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
@@ -51,10 +51,10 @@
 				<RowDefinition />
 				<RowDefinition />
 			</Grid.RowDefinitions>
-			<TextBlock Grid.Row="0" Text="Celsius" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding Path=TemperatureInKelvin, Converter={StaticResource celsiusConverter}}" Classes="textBox" />
+			<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
+			<TextBox Grid.Row="1" Text="{Binding Path=Temperature}" Classes="textBox" />
 		</Grid>
-		<Grid>
+		<Grid DataContext="{Binding Fahrenheit}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
@@ -62,10 +62,10 @@
 				<RowDefinition />
 				<RowDefinition />
 			</Grid.RowDefinitions>
-			<TextBlock Grid.Row="0" Text="Fahrenheit" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding Path=TemperatureInKelvin, Converter={StaticResource fahrenheitConverter}}" Classes="textBox" />
+			<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
+			<TextBox Grid.Row="1" Text="{Binding Path=Temperature}" Classes="textBox" />
 		</Grid>
-		<Grid>
+		<Grid DataContext="{Binding Kelvin}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
@@ -73,8 +73,8 @@
 				<RowDefinition />
 				<RowDefinition />
 			</Grid.RowDefinitions>
-			<TextBlock Grid.Row="0" Text="Kelvin" Classes="label" />
-			<TextBox Grid.Row="1" Text="{Binding Path=TemperatureInKelvin}" Classes="textBox" />
+			<TextBlock Grid.Row="0" Text="{Binding Name}" Classes="label" />
+			<TextBox Grid.Row="1" Text="{Binding Path=Temperature}" Classes="textBox" />
 		</Grid>
 		<Slider Name="slider" Minimum="0" Maximum="1000" Value="{Binding Path=TemperatureInKelvin}" />
 	</StackPanel>
