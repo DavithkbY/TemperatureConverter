@@ -47,8 +47,11 @@ namespace ViewModel
             this.temperatureScale = temperatureScale;
 
             this.Temperature = this.parent.TemperatureInKelvin.Derive(kelvin => temperatureScale.ConvertFromKelvin(kelvin), t => temperatureScale.ConvertToKelvin(t));
-            this.Increment = new AddCommand(this.Temperature, 1);
-            this.Decrement = new AddCommand(this.Temperature, -1);
+
+            var minimum = temperatureScale.ConvertFromKelvin(0);
+            var maximum = temperatureScale.ConvertFromKelvin(1000);
+            this.Increment = new AddCommand(this.Temperature, 1, minimum, maximum);
+            this.Decrement = new AddCommand(this.Temperature, -1, minimum, maximum);
         }
 
         public string Name => temperatureScale.Name;
@@ -61,18 +64,25 @@ namespace ViewModel
     {
         private readonly Cell<double> cell;
         private readonly int delta;
+        private readonly double minimum;
+        private readonly double maximum;
 
-        public AddCommand(Cell<double> cell, int delta)
+        public AddCommand(Cell<double> cell, int delta, double minimum, double maximum)
         {
             this.cell = cell;
             this.delta = delta;
+            this.minimum = minimum;
+            this.maximum = maximum;
+
+            this.cell.PropertyChanged += (sender, args) => CanExecuteChanged(this, new EventArgs());
         }
 
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            var newValue = cell.Value + delta;
+            return minimum <= newValue && newValue <= maximum;
         }
 
         public void Execute(object parameter)
