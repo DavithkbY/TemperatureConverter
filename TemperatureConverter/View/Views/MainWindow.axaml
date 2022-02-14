@@ -3,13 +3,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View.Views"
+        xmlns:localView="clr-namespace:View"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="View.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="View">
 	<Window.Resources>
-		<local:CelsiusConverter x:Key="celsiusConverter" />
-		<local:FahrenheitConverter x:Key="fahrenheitConverter" />
+		<local:TemperatureConverter x:Key="celsiusConverter">
+			<local:TemperatureConverter.TemperatureScale>
+				<localView:CelsiusTemperatureScale />
+			</local:TemperatureConverter.TemperatureScale>
+		</local:TemperatureConverter>
+		<local:TemperatureConverter x:Key="fahrenheitConverter">
+			<local:TemperatureConverter.TemperatureScale>
+				<localView:FahrenheitTemperatureScale />
+			</local:TemperatureConverter.TemperatureScale>
+		</local:TemperatureConverter>
 	</Window.Resources>
 	<Window.Styles>
 		<Style Selector="TextBlock.label">
