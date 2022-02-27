@@ -23,7 +23,21 @@ namespace View.Views
         private void ConvertToCelcius(object sender,RoutedEventArgs e)
         {
             var inputBox = this.FindControl<TextBox>("inputBox");
-            inputBox.Text = "You click the button!";
+            var inputText = inputBox.Text;
+            var fahrenheit = double.Parse(inputText);
+            var celcius = (fahrenheit-32)/1.8;
+            inputBox.Text = celcius.ToString();
+
+        }
+
+        private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
+        {
+            var inputBox = this.FindControl<TextBox>("inputBox");
+            var inputText = inputBox.Text;
+            var celcius = double.Parse(inputText);
+            var fahrenheit = (celcius *1.8) + 32;
+            inputBox.Text = fahrenheit.ToString();
+
         }
     }
 }
