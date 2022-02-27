@@ -7,7 +7,8 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="View">
     <StackPanel>
-        <TextBox Name="inputBox" />
+        <TextBox Name="inputBoxCelcius" />
+        <TextBox Name="inputBoxFahrenheit" />
         <Button Content="Convert to Celcius" Click="ConvertToCelcius" />
         <Button Content="Convert to Fahrenheit" Click="ConvertToFahrenheit" />
     </StackPanel>

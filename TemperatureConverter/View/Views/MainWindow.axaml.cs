@@ -22,21 +22,23 @@ namespace View.Views
 
         private void ConvertToCelcius(object sender,RoutedEventArgs e)
         {
-            var inputBox = this.FindControl<TextBox>("inputBox");
+            var outputBox = this.FindControl<TextBox>("inputBoxCelcius");
+            var inputBox = this.FindControl<TextBox>("inputBoxFahrenheit");
             var inputText = inputBox.Text;
             var fahrenheit = double.Parse(inputText);
             var celcius = (fahrenheit-32)/1.8;
-            inputBox.Text = celcius.ToString();
+            outputBox.Text = celcius.ToString();
 
         }
 
         private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
         {
-            var inputBox = this.FindControl<TextBox>("inputBox");
+            var outputBox = this.FindControl<TextBox>("inputBoxFahrenheit");
+            var inputBox = this.FindControl<TextBox>("inputBoxCelcius");
             var inputText = inputBox.Text;
             var celcius = double.Parse(inputText);
-            var fahrenheit = (celcius *1.8) + 32;
-            inputBox.Text = fahrenheit.ToString();
+            var fahrenheit = (celcius *1.8) * 1.8;
+            outputBox.Text = fahrenheit.ToString();
 
         }
     }
