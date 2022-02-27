@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
 namespace View.Views
@@ -17,6 +18,12 @@ namespace View.Views
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+        }
+
+        private void ConvertToCelcius(object sender,RoutedEventArgs e)
+        {
+            var inputBox = this.FindControl<TextBox>("inputBox");
+            inputBox.Text = "You click the button!";
         }
     }
 }
